@@ -63,7 +63,7 @@ Unlike temporal information, where the sequence order of the data-points natural
 
 This function represents the multi-head attention block that is used to predict the future trajectories of the agents. The fundamental part of the function is the sequential application of the temporal attention and social attention using `temporal_attn_fn()` and `social_attn_fn()` on the agents embedding, repeated L times. 
 
-*NEW for MS2:* we modified the _forward function in ptr.py to add the noise and drift on the ego_in variable for data augmentation. This includes adding a decreasing shift over the first 5 steps, a constant shift, or Guassian noise, all of which are detailed in the report. When computing the predictions for the submission, this section has to be commented and no augmentation or modification should be done to the variables.
+*NEW for MS2:* we modified the _forward function in ptr.py to add the noise and drift on the ego_in variable for data augmentation. This includes adding a decreasing shift over the first 5 steps, a constant shift, or Guassian noise, all of which are detailed in the report. When computing the predictions for the submission, this section has to be commented, and no augmentation or modification should be done to the variables.
 
 
 **Training and submission**
