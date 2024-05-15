@@ -171,7 +171,7 @@ class PTR(BaseModel):
         self.k_attr = k_attr
         self.d_k = config['hidden_size']
         self.c = config['num_modes']
-
+        # self.min_stdev = 0.01
         self.L_enc = config['num_encoder_layers']
         self.dropout = config['dropout']
         self.num_heads = config['tx_num_heads']
@@ -338,6 +338,14 @@ class PTR(BaseModel):
                
         ego_in[:,:,0] *= ego_in[:,:,2]
         ego_in[:,:,1] *= ego_in[:,:,2]
+
+        ## For method 3
+        # if self.noise_std_dev > 0:  # Check if noise addition is enabled
+        #     ego_noise = torch.randn_like(ego_in[..., :2]) * self.noise_std_dev
+        #     agents_noise = torch.randn_like(agents_in[..., :-1, :2]) * self.noise_std_dev
+
+        #     ego_in[..., :2] += ego_noise
+        #     agents_in[..., :-1, :2] += agents_noise
 
         B = ego_in.size(0)
         # Encode all input observations (k_attr --> d_k)
